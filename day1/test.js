@@ -1,14 +1,8 @@
 const api = require("./solution");
-const fs = require("fs");
+const utils = require("../utils");
 
-new Promise((resolve, reject) => {
-  fs.readFile("./input.txt", "utf-8", function(err, data) {
-    if (err) {
-      reject(Error("Can't read the input file."));
-    }
-    resolve(data);
-  });
-})
+utils
+  .readFile("./input.txt")
   .then(data => {
     const inputData = data.split("\n").map(value => Number(value));
     console.log(api.getRequiredFuelFromArrOfMass(inputData));
